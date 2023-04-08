@@ -8,7 +8,7 @@ csv_file = 'aft.csv'
 try:
     df = pd.read_csv(csv_file)
 except FileNotFoundError:
-    df = pd.DataFrame(columns=['Date', 'Fe', 'PO4', 'NO3'])
+    df = pd.DataFrame(columns=['Date', 'Fe drops', 'PO4 ml', 'NO3 ml'])
 
 # set the 'Date' column as the index
 df = df.set_index('Date')
