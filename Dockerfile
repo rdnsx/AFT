@@ -1,24 +1,18 @@
-# Base image
-FROM python:3.8-slim-buster
+FROM python:3.9-slim-buster
 
-# Set the working directory
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        python3-dev \
+        libpq-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
-# Copy the requirements file into the container
-COPY requirements.txt requirements.txt
+COPY requirements.txt /app
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install the required dependencies
-RUN pip3 install -r requirements.txt
+COPY . /app
 
-# Copy the rest of the application code into the container
-COPY . .
-
-# Set the environment variable
-ENV FLASK_APP=aft.py
-
-# Expose the default Flask port
-EXPOSE 5000
-
-# Start the Flask application
-CMD ["flask", "run", "--host", "0.0.0.0"]
-
+CMD ["python", "aft.py"]
