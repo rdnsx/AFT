@@ -8,10 +8,10 @@ csv_file = 'aft.csv'
 try:
     df = pd.read_csv(csv_file)
 except FileNotFoundError:
-    df = pd.DataFrame(columns=['date', 'eisen', 'phosphat', 'nitrat'])
+    df = pd.DataFrame(columns=['Date', 'Fe', 'PO4', 'NO3'])
 
-# set the 'date' column as the index
-df = df.set_index('date')
+# set the 'Date' column as the index
+df = df.set_index('Date')
 
 while True:
     # get the date and fertilizer dose from the user
@@ -22,12 +22,12 @@ while True:
         print('Data for this date already exists. Please enter a different date.')
         continue
 
-    eisen = float(input('Enter the Fe dose(drops): '))
-    phosphat = float(input('Enter the PO4 dose (ml): '))
-    nitrat = float(input('Enter the NO3 dose (ml): '))
+    fe = float(input('Enter the Fe dose(drops): '))
+    po4 = float(input('Enter the PO4 dose (ml): '))
+    no3 = float(input('Enter the NO3 dose (ml): '))
 
     # append the data to the dataframe
-    df.loc[date] = [eisen, phosphat, nitrat]
+    df.loc[date] = [fe, po4, no3]
 
     # ask the user if they want to continue entering data
     choice = input('Do you want to enter another dose (y/n)? ')
@@ -43,6 +43,9 @@ plt.show()
 
 # reset the index to the default integer index
 df = df.reset_index()
+
+# rename the columns
+df = df.rename(columns={'Date': 'date', 'Fe': 'eisen', 'PO4': 'phosphat', 'NO3': 'nitrat'})
 
 # save the data to the CSV file
 df.to_csv(csv_file, mode='w', index=False, header=True)
