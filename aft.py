@@ -12,7 +12,7 @@ except FileNotFoundError:
 
 while True:
     # get the date and fertilizer dose from the user
-    date = input('Enter the date (DD-MM-YYYY): ')
+    date = input('Enter the date (DD.MM.YYYY): ')
     eisen = float(input('Enter the Fe dose(drops): '))
     phosphat = float(input('Enter the PO4 dose (ml): '))
     nitrat = float(input('Enter the NO3 dose (ml): '))
