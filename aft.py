@@ -11,10 +11,10 @@ else:
     df = pd.DataFrame(columns=['date', 'eisen', 'phosphat', 'nitrat'])
 
 # Get user input
-date = input('Enter the date (YYYY-MM-DD): ')
-eisen = float(input('Enter the Eisen dose: '))
-phosphat = float(input('Enter the Phosphat dose: '))
-nitrat = float(input('Enter the Nitrat dose: '))
+date = input('Enter the date (DD.MM.YYYY): ')
+eisen = float(input('Enter the Fe dose: '))
+phosphat = float(input('Enter the PO4 dose: '))
+nitrat = float(input('Enter the NO3 dose: '))
 
 # Add input to DataFrame
 df = pd.concat([df, pd.DataFrame({'date': date, 'eisen': eisen, 'phosphat': phosphat, 'nitrat': nitrat}, index=[0])], ignore_index=True)
