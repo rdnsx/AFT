@@ -1,30 +1,23 @@
 import pandas as pd
-import matplotlib.pyplot as plt
+import os.path
+from os import path
 
-# create an empty dataframe to store the fertilizer dose
-df = pd.DataFrame(columns=['date', 'eisen', 'phosphat', 'nitrat'])
+csv_file = 'data.csv'
 
-while True:
-    # get the date and fertilizer dose from the user
-    date = input('Enter the date (YYYY-MM-DD): ')
-    eisen = float(input('Enter the Eisen dose: '))
-    phosphat = float(input('Enter the Phosphat dose: '))
-    nitrat = float(input('Enter the Nitrat dose: '))
-    
-    # append the data to the dataframe
-    df = df.append({'date': date, 'eisen': eisen, 'phosphat': phosphat, 'nitrat': nitrat}, ignore_index=True)
-    
-    # ask the user if they want to continue entering data
-    choice = input('Do you want to enter another dose (y/n)? ')
-    if choice.lower() == 'n':
-        break
+# Check if CSV file exists
+if path.exists(csv_file):
+    df = pd.read_csv(csv_file)
+else:
+    df = pd.DataFrame(columns=['date', 'eisen', 'phosphat', 'nitrat'])
 
-# plot the graph
-df.plot(x='date', y=['eisen', 'phosphat', 'nitrat'])
-plt.title('Daily Aquarium Fertilizer Dose')
-plt.xlabel('Date')
-plt.ylabel('Fertilizer Dose')
-plt.show()
+# Get user input
+date = input('Enter the date (DD.MM.YYYY): ')
+eisen = input('Enter the Fe dose (drops): ')
+phosphat = input('Enter the Phosphat dose (ml): ')
+nitrat = input('Enter the Nitrat dose (ml): ')
 
-# save the data to a CSV file
-df.to_csv('aquarium_fertilizer_dose.csv', index=False)
+# Add input to DataFrame
+df = df.append({'date': date, 'eisen': eisen, 'phosphat': phosphat, 'nitrat': nitrat}, ignore_index=True)
+
+# Write DataFrame to CSV file
+df.to_csv(csv_file, index=False)
