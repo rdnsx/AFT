@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import pandas as pd
+from jinja2.utils import escape
 
 app = Flask(__name__)
 
