@@ -45,7 +45,7 @@ plt.show()
 df = df.reset_index()
 
 # rename the columns
-df = df.rename(columns={'Date': 'date', 'Fe': 'eisen', 'PO4': 'phosphat', 'NO3': 'nitrat'})
+df = pd.concat([df, pd.DataFrame({'Date': date, 'Fe': eisen, 'PO4': phosphat, 'NO3': nitrat}, index=[0])], ignore_index=True)
 
 # save the data to the CSV file
 df.to_csv(csv_file, mode='w', index=False, header=True)
