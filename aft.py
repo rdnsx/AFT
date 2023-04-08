@@ -26,7 +26,7 @@ while True:
         break
 
 # plot the graph
-df.plot(x='date', y=['eisen', 'phosphat', 'nitrat'])
+df.plot(x='Datum', y=['Fe', 'PO4', 'NO3'])
 plt.title('Daily Aquarium Fertilizer Dose')
 plt.xlabel('Date')
 plt.ylabel('Fertilizer Dose')
