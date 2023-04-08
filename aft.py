@@ -17,7 +17,7 @@ phosphat = float(input('Enter the Phosphat dose: '))
 nitrat = float(input('Enter the Nitrat dose: '))
 
 # Add input to DataFrame
-df = df.append({'date': date, 'eisen': eisen, 'phosphat': phosphat, 'nitrat': nitrat}, ignore_index=True)
+df = pd.concat([df, pd.DataFrame({'date': date, 'eisen': eisen, 'phosphat': phosphat, 'nitrat': nitrat}, index=[0])], ignore_index=True)
 
 # Write DataFrame to CSV file
 df.to_csv(csv_file, index=False)
