@@ -12,7 +12,7 @@ while True:
     nitrat = float(input('Enter the Nitrat dose: '))
     
     # append the data to the dataframe
-    df = df.append({'date': date, 'eisen': eisen, 'phosphat': phosphat, 'nitrat': nitrat}, ignore_index=True)
+    df = pd.concat([df, pd.DataFrame({'date': date, 'eisen': eisen, 'phosphat': phosphat, 'nitrat': nitrat}, index=[0])], ignore_index=True)
     
     # ask the user if they want to continue entering data
     choice = input('Do you want to enter another dose (y/n)? ')
