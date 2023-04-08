@@ -22,7 +22,7 @@ while True:
         print('Data for this date already exists. Please enter a different date.')
         continue
 
-    fe = float(input('Enter the Fe dose(drops): '))
+    fe = float(input('Enter the Fe dose (drops): '))
     po4 = float(input('Enter the PO4 dose (ml): '))
     no3 = float(input('Enter the NO3 dose (ml): '))
 
